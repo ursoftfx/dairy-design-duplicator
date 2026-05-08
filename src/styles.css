@@ -62,9 +62,12 @@
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 2rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.22 0.05 230);
+  --brand-navy: oklch(0.22 0.05 230);
+  --brand-teal: oklch(0.72 0.12 175);
+  --brand-teal-foreground: oklch(0.99 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
