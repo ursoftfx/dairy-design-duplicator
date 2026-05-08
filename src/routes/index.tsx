@@ -6,13 +6,13 @@ import { Milk, Leaf, ShieldCheck, Truck, Sprout, BadgeCheck } from "lucide-react
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "MilkLane — Quality Dairy, Naturally Fresh" },
+      { title: "Athirshtadairy — Quality Dairy, Naturally Fresh" },
       {
         name: "description",
         content:
           "Premium dairy and value-added products crafted for quality, freshness, and trust — delivered from farm to table.",
       },
-      { property: "og:title", content: "MilkLane — Quality Dairy, Naturally Fresh" },
+      { property: "og:title", content: "Athirshtadairy — Quality Dairy, Naturally Fresh" },
       {
         property: "og:description",
         content: "Premium dairy crafted for quality, freshness, and trust.",
@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const navItems = ["Farmlink", "DistriCo", "MilkLane", "BioScience", "Tech Solutions", "About Us"];
+const navItems = ["Farmlink", "DistriCo", "Athirshtadairy", "BioScience", "Tech Solutions", "About Us"];
 
 function Index() {
   return (
@@ -41,7 +41,7 @@ function Index() {
         <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 text-white">
           <Link to="/" className="flex flex-col leading-none">
             <span className="text-2xl font-extrabold tracking-tight">
-              INN<span className="text-brand-teal">O</span>TERRA
+              ATHIRSHTA<span className="text-brand-teal">D</span>AIRY
             </span>
             <span className="text-[10px] font-medium opacity-75">
               Disrupting the food value chain with technology.
@@ -102,13 +102,13 @@ function Index() {
           </div>
           <div className="space-y-6 text-base leading-relaxed text-muted-foreground">
             <p>
-              At MilkLane, we redefine dairy excellence by combining quality, freshness, and
+              At Athirshtadairy, we redefine dairy excellence by combining quality, freshness, and
               traceability. Our dairy and value-added products are crafted with care, ensuring every
               drop and every bite meets the highest standards of safety and nutrition.
             </p>
             <p>
               Sourced directly from our network of trusted farmers and processed in state-of-the-art
-              facilities, MilkLane products bring the best of dairy to consumers and businesses
+              facilities, Athirshtadairy products bring the best of dairy to consumers and businesses
               alike. Whether it's the purity of fresh milk or the goodness of our value-added
               offerings like curd, paneer, and ghee — every product reflects our promise.
             </p>
@@ -224,7 +224,7 @@ function Index() {
       {/* FOOTER */}
       <footer className="border-t border-border bg-background py-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-sm text-muted-foreground sm:flex-row">
-          <p>© {new Date().getFullYear()} Innoterra. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Athirshtadairy. All rights reserved.</p>
           <p>Disrupting the food value chain with technology.</p>
         </div>
       </footer>
