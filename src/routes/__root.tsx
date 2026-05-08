@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "http://athirshtadairy.com/" },
+      { name: "description", content: "Duplicates website designs and color schemes, allowing for easy replication of existing web aesthetics." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "http://athirshtadairy.com/" },
+      { property: "og:description", content: "Duplicates website designs and color schemes, allowing for easy replication of existing web aesthetics." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "http://athirshtadairy.com/" },
+      { name: "twitter:description", content: "Duplicates website designs and color schemes, allowing for easy replication of existing web aesthetics." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0817e33b-3950-42b6-a464-76859bc56463/id-preview-f6890d24--5963f329-cc06-4b8d-84ff-8d96f7377a20.lovable.app-1778255572488.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/0817e33b-3950-42b6-a464-76859bc56463/id-preview-f6890d24--5963f329-cc06-4b8d-84ff-8d96f7377a20.lovable.app-1778255572488.png" },
     ],
     links: [
       {
