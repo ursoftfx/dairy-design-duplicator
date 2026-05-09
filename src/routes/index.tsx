@@ -233,6 +233,36 @@ function Index() {
         </div>
       </section>
 
+      {/* BOTTOM GALLERY */}
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mb-10 max-w-2xl">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-teal">
+            Our story in pictures
+          </p>
+          <h2 className="text-3xl font-extrabold sm:text-4xl">
+            From our farm to your family.
+          </h2>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="overflow-hidden rounded-3xl shadow-xl shadow-brand-navy/10">
+            <img
+              src={bottomOne}
+              alt="Athirshta Dairy: Pure goodness, farm-fresh every day"
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="overflow-hidden rounded-3xl shadow-xl shadow-brand-navy/10">
+            <img
+              src={bottomTwo}
+              alt="Athirshta Dairy collage — farm, factory, family"
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* FOOTER */}
       <footer className="border-t border-border bg-background py-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-sm text-muted-foreground sm:flex-row">
