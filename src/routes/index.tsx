@@ -4,6 +4,7 @@ import coverTwo from "@/assets/cover-2.jpg";
 import productsImg from "@/assets/dairy-products.jpg";
 import bottomOne from "@/assets/bottom-1.jpg";
 import bottomTwo from "@/assets/bottom-2.jpg";
+import logo from "@/assets/athirshta-logo.png";
 import { Milk, Leaf, ShieldCheck, Truck, Sprout, BadgeCheck } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -42,13 +43,14 @@ function Index() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/55 via-black/30 to-transparent" />
 
         <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 text-white">
-          <Link to="/" className="flex flex-col leading-none">
-            <span className="text-2xl font-extrabold tracking-tight">
-              ATHIRSHTA<span className="text-brand-teal">D</span>AIRY
-            </span>
-            <span className="text-[10px] font-medium opacity-75">
-              Disrupting the food value chain with technology.
-            </span>
+          <Link to="/" className="flex items-center gap-3 rounded-2xl bg-white/95 px-4 py-2 shadow-lg shadow-black/10 backdrop-blur">
+            <img
+              src={logo}
+              alt="Athirshta — Trusted Quality & Taste"
+              width={200}
+              height={64}
+              className="h-12 w-auto sm:h-14"
+            />
           </Link>
           <nav className="hidden items-center gap-8 text-sm font-medium lg:flex">
             {navItems.map((n) => (
@@ -229,6 +231,30 @@ function Index() {
             >
               Explore as a Seller
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* VIDEO */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-10 max-w-2xl">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-teal">
+            Watch our story
+          </p>
+          <h2 className="text-3xl font-extrabold sm:text-4xl">
+            Inside Athirshta Dairy.
+          </h2>
+        </div>
+        <div className="overflow-hidden rounded-3xl shadow-2xl shadow-brand-navy/20">
+          <div className="relative aspect-video w-full">
+            <iframe
+              src="https://www.youtube.com/embed/c1-UCuoKXMU"
+              title="Athirshta Dairy"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full"
+            />
           </div>
         </div>
       </section>
