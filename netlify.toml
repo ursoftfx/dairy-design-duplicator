@@ -1,0 +1,9 @@
+[build]
+  command = "vite build --config vite.config.netlify.ts"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# TanStack Start's netlify target emits Netlify Functions automatically.
+# No extra redirects needed — the framework wires SSR + static assets.
