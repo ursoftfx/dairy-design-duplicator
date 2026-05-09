@@ -1,6 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import heroImg from "@/assets/dairy-hero.jpg";
+import heroImg from "@/assets/cover-1.jpg";
+import coverTwo from "@/assets/cover-2.jpg";
 import productsImg from "@/assets/dairy-products.jpg";
+import bottomOne from "@/assets/bottom-1.jpg";
+import bottomTwo from "@/assets/bottom-2.jpg";
 import { Milk, Leaf, ShieldCheck, Truck, Sprout, BadgeCheck } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -89,6 +92,15 @@ function Index() {
             </a>
           </div>
         </div>
+      </section>
+
+      {/* COVER 2 BANNER */}
+      <section className="relative w-full">
+        <img
+          src={coverTwo}
+          alt="Athirshta Dairy premium milk, ghee and paneer"
+          className="h-[40vh] w-full object-cover sm:h-[60vh]"
+        />
       </section>
 
       {/* SERVING SECTION */}
@@ -217,6 +229,36 @@ function Index() {
             >
               Explore as a Seller
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* BOTTOM GALLERY */}
+      <section className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mb-10 max-w-2xl">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-teal">
+            Our story in pictures
+          </p>
+          <h2 className="text-3xl font-extrabold sm:text-4xl">
+            From our farm to your family.
+          </h2>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="overflow-hidden rounded-3xl shadow-xl shadow-brand-navy/10">
+            <img
+              src={bottomOne}
+              alt="Athirshta Dairy: Pure goodness, farm-fresh every day"
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="overflow-hidden rounded-3xl shadow-xl shadow-brand-navy/10">
+            <img
+              src={bottomTwo}
+              alt="Athirshta Dairy collage — farm, factory, family"
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
           </div>
         </div>
       </section>
