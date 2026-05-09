@@ -4,6 +4,7 @@ import coverTwo from "@/assets/cover-2.jpg";
 import productsImg from "@/assets/dairy-products.jpg";
 import bottomOne from "@/assets/bottom-1.jpg";
 import bottomTwo from "@/assets/bottom-2.jpg";
+import logo from "@/assets/athirshta-logo.png";
 import { Milk, Leaf, ShieldCheck, Truck, Sprout, BadgeCheck } from "lucide-react";
 
 export const Route = createFileRoute("/")({
