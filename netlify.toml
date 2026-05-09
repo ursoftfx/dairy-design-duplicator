@@ -5,5 +5,5 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# TanStack Start's netlify target emits Netlify Functions automatically.
-# No extra redirects needed — the framework wires SSR + static assets.
+# Nitro detects Netlify automatically and outputs serverless functions
+# alongside the static publish directory. No redirects file needed.
