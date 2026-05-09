@@ -235,6 +235,30 @@ function Index() {
         </div>
       </section>
 
+      {/* VIDEO */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-10 max-w-2xl">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-teal">
+            Watch our story
+          </p>
+          <h2 className="text-3xl font-extrabold sm:text-4xl">
+            Inside Athirshta Dairy.
+          </h2>
+        </div>
+        <div className="overflow-hidden rounded-3xl shadow-2xl shadow-brand-navy/20">
+          <div className="relative aspect-video w-full">
+            <iframe
+              src="https://www.youtube.com/embed/c1-UCuoKXMU"
+              title="Athirshta Dairy"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* BOTTOM GALLERY */}
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="mb-10 max-w-2xl">
