@@ -43,13 +43,14 @@ function Index() {
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/55 via-black/30 to-transparent" />
 
         <header className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 text-white">
-          <Link to="/" className="flex flex-col leading-none">
-            <span className="text-2xl font-extrabold tracking-tight">
-              ATHIRSHTA<span className="text-brand-teal">D</span>AIRY
-            </span>
-            <span className="text-[10px] font-medium opacity-75">
-              Disrupting the food value chain with technology.
-            </span>
+          <Link to="/" className="flex items-center gap-3 rounded-2xl bg-white/95 px-4 py-2 shadow-lg shadow-black/10 backdrop-blur">
+            <img
+              src={logo}
+              alt="Athirshta — Trusted Quality & Taste"
+              width={200}
+              height={64}
+              className="h-12 w-auto sm:h-14"
+            />
           </Link>
           <nav className="hidden items-center gap-8 text-sm font-medium lg:flex">
             {navItems.map((n) => (
