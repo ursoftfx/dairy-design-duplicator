@@ -94,6 +94,15 @@ function Index() {
         </div>
       </section>
 
+      {/* COVER 2 BANNER */}
+      <section className="relative w-full">
+        <img
+          src={coverTwo}
+          alt="Athirshta Dairy premium milk, ghee and paneer"
+          className="h-[40vh] w-full object-cover sm:h-[60vh]"
+        />
+      </section>
+
       {/* SERVING SECTION */}
       <section className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
