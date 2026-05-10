@@ -6,6 +6,8 @@ import bottomOne from "@/assets/bottom-1.jpg";
 import bottomTwo from "@/assets/bottom-2.jpg";
 import logo from "@/assets/athirshta-logo.png";
 import { Milk, Leaf, ShieldCheck, Truck, Sprout, BadgeCheck } from "lucide-react";
+import { useSiteContent, DEFAULT_CONTENT } from "@/lib/site-content";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,12 +31,19 @@ export const Route = createFileRoute("/")({
 const navItems = ["Farmlink", "DistriCo", "Athirshtadairy", "BioScience", "Tech Solutions", "About Us"];
 
 function Index() {
+  const { data } = useSiteContent();
+  const c = data ?? DEFAULT_CONTENT;
+  const heroSrc = c.coverImage || heroImg;
+  const coverTwoSrc = c.coverTwoImage || coverTwo;
+  const bottomOneSrc = c.bottomOneImage || bottomOne;
+  const bottomTwoSrc = c.bottomTwoImage || bottomTwo;
+
   return (
     <div className="min-h-screen bg-background">
       {/* HERO */}
       <section className="relative isolate overflow-hidden">
         <img
-          src={heroImg}
+          src={heroSrc}
           alt="Glass of fresh milk being poured in a green pasture with a cow in the background"
           width={1920}
           height={1080}
@@ -71,14 +80,10 @@ function Index() {
           <p className="mb-6 text-sm opacity-80">
             <Link to="/" className="hover:underline">Home</Link> / Dairy
           </p>
-          <h1 className="max-w-2xl text-5xl font-extrabold leading-[1.05] text-white sm:text-6xl md:text-7xl">
-            Quality Dairy,
-            <br /> Naturally Fresh
+          <h1 className="max-w-2xl whitespace-pre-line text-5xl font-extrabold leading-[1.05] text-white sm:text-6xl md:text-7xl">
+            {c.heroTitle}
           </h1>
-          <p className="mt-6 max-w-xl text-base opacity-90 sm:text-lg">
-            Premium dairy and value-added products crafted for quality, freshness, and trust —
-            delivered from farm to table.
-          </p>
+          <p className="mt-6 max-w-xl text-base opacity-90 sm:text-lg">{c.heroSubtitle}</p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a
               href="#buyer"
@@ -99,7 +104,7 @@ function Index() {
       {/* COVER 2 BANNER */}
       <section className="relative w-full">
         <img
-          src={coverTwo}
+          src={coverTwoSrc}
           alt="Athirshta Dairy premium milk, ghee and paneer"
           className="h-[40vh] w-full object-cover sm:h-[60vh]"
         />
@@ -109,23 +114,12 @@ function Index() {
       <section className="mx-auto max-w-7xl px-6 py-24 sm:py-32">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
           <div>
-            <h2 className="text-4xl font-extrabold leading-tight sm:text-5xl">
-              Serving Dairy Farmers
-              <br /> with Excellence
+            <h2 className="whitespace-pre-line text-4xl font-extrabold leading-tight sm:text-5xl">
+              {c.servingTitle}
             </h2>
           </div>
           <div className="space-y-6 text-base leading-relaxed text-muted-foreground">
-            <p>
-              At Athirshtadairy, we redefine dairy excellence by combining quality, freshness, and
-              traceability. Our dairy and value-added products are crafted with care, ensuring every
-              drop and every bite meets the highest standards of safety and nutrition.
-            </p>
-            <p>
-              Sourced directly from our network of trusted farmers and processed in state-of-the-art
-              facilities, Athirshtadairy products bring the best of dairy to consumers and businesses
-              alike. Whether it's the purity of fresh milk or the goodness of our value-added
-              offerings like curd, paneer, and ghee — every product reflects our promise.
-            </p>
+            <p>{c.servingBody}</p>
           </div>
         </div>
       </section>
@@ -241,14 +235,12 @@ function Index() {
           <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-brand-teal">
             Watch our story
           </p>
-          <h2 className="text-3xl font-extrabold sm:text-4xl">
-            Inside Athirshta Dairy.
-          </h2>
+          <h2 className="text-3xl font-extrabold sm:text-4xl">{c.videoHeading}</h2>
         </div>
         <div className="overflow-hidden rounded-3xl shadow-2xl shadow-brand-navy/20">
           <div className="relative aspect-video w-full">
             <iframe
-              src="https://www.youtube.com/embed/c1-UCuoKXMU"
+              src={`https://www.youtube.com/embed/${c.youtubeId}`}
               title="Athirshta Dairy"
               loading="lazy"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -271,20 +263,10 @@ function Index() {
         </div>
         <div className="grid gap-6 md:grid-cols-2">
           <div className="overflow-hidden rounded-3xl shadow-xl shadow-brand-navy/10">
-            <img
-              src={bottomOne}
-              alt="Athirshta Dairy: Pure goodness, farm-fresh every day"
-              loading="lazy"
-              className="h-full w-full object-cover"
-            />
+            <img src={bottomOneSrc} alt="Athirshta Dairy" loading="lazy" className="h-full w-full object-cover" />
           </div>
           <div className="overflow-hidden rounded-3xl shadow-xl shadow-brand-navy/10">
-            <img
-              src={bottomTwo}
-              alt="Athirshta Dairy collage — farm, factory, family"
-              loading="lazy"
-              className="h-full w-full object-cover"
-            />
+            <img src={bottomTwoSrc} alt="Athirshta Dairy" loading="lazy" className="h-full w-full object-cover" />
           </div>
         </div>
       </section>
@@ -293,9 +275,11 @@ function Index() {
       <footer className="border-t border-border bg-background py-10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 text-sm text-muted-foreground sm:flex-row">
           <p>© {new Date().getFullYear()} Athirshtadairy. All rights reserved.</p>
-          <p>Disrupting the food value chain with technology.</p>
+          <Link to="/admin" className="opacity-60 hover:opacity-100">Admin</Link>
         </div>
       </footer>
+
+      <WhatsAppButton number={c.whatsappNumber} />
     </div>
   );
 }
