@@ -26,18 +26,31 @@ function AdminPage() {
 
     (async () => {
       try {
-        const { data: userData, error: userError } = await supabase.auth.getUser();
+        let userData: Awaited<ReturnType<typeof supabase.auth.getUser>>["data"] | null = null;
+        let userError: Awaited<ReturnType<typeof supabase.auth.getUser>>["error"] | null = null;
 
-        if (userError || !userData.user) {
+        for (let attempt = 0; attempt < 3; attempt += 1) {
+          const result = await supabase.auth.getUser();
+          userData = result.data;
+          userError = result.error;
+
+          if (result.data.user) break;
+
+          await new Promise((resolve) => setTimeout(resolve, 250));
+        }
+
+        if (userError || !userData?.user) {
           navigate({ to: "/login" });
           return;
         }
 
-        const [{ data: admin, error: roleError }, c] = await Promise.all([
-          supabase.rpc("has_role", {
-            _user_id: userData.user.id,
-            _role: "admin",
-          }),
+        const [{ data: roleRow, error: roleError }, c] = await Promise.all([
+          supabase
+            .from("user_roles")
+            .select("role")
+            .eq("user_id", userData.user.id)
+            .eq("role", "admin")
+            .maybeSingle(),
           fetchSiteContent(),
         ]);
 
@@ -47,7 +60,7 @@ function AdminPage() {
           setMsg("Could not verify admin access. Please try signing in again.");
           setIsAdmin(false);
         } else {
-          setIsAdmin(Boolean(admin));
+          setIsAdmin(Boolean(roleRow));
         }
 
         setContent(c);
