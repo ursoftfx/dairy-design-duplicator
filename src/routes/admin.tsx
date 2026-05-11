@@ -22,22 +22,40 @@ function AdminPage() {
   const [msg, setMsg] = useState<string | null>(null);
 
   useEffect(() => {
+    let active = true;
+
     (async () => {
-      const { data: sess } = await supabase.auth.getSession();
-      if (!sess.session) {
+      const { data: userData, error: userError } = await supabase.auth.getUser();
+
+      if (userError || !userData.user) {
         navigate({ to: "/login" });
         return;
       }
-      const { data: roles } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", sess.session.user.id);
-      const admin = roles?.some((r) => r.role === "admin") ?? false;
-      setIsAdmin(admin);
-      const c = await fetchSiteContent();
+
+      const [{ data: admin, error: roleError }, c] = await Promise.all([
+        supabase.rpc("has_role", {
+          _user_id: userData.user.id,
+          _role: "admin",
+        }),
+        fetchSiteContent(),
+      ]);
+
+      if (!active) return;
+
+      if (roleError) {
+        setMsg("Could not verify admin access. Please try signing in again.");
+        setIsAdmin(false);
+      } else {
+        setIsAdmin(Boolean(admin));
+      }
+
       setContent(c);
       setReady(true);
     })();
+
+    return () => {
+      active = false;
+    };
   }, [navigate]);
 
   function update<K extends keyof SiteContent>(k: K, v: SiteContent[K]) {
@@ -62,13 +80,13 @@ function AdminPage() {
   async function save() {
     setSaving(true);
     setMsg(null);
-    const { data: sess } = await supabase.auth.getSession();
+    const { data: userData } = await supabase.auth.getUser();
     const { error } = await supabase
       .from("site_content")
       .update({
         data: content as never,
         updated_at: new Date().toISOString(),
-        updated_by: sess.session?.user.id,
+        updated_by: userData.user?.id,
       })
       .eq("id", "home");
     setSaving(false);
