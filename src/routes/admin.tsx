@@ -25,32 +25,39 @@ function AdminPage() {
     let active = true;
 
     (async () => {
-      const { data: userData, error: userError } = await supabase.auth.getUser();
+      try {
+        const { data: userData, error: userError } = await supabase.auth.getUser();
 
-      if (userError || !userData.user) {
-        navigate({ to: "/login" });
-        return;
-      }
+        if (userError || !userData.user) {
+          navigate({ to: "/login" });
+          return;
+        }
 
-      const [{ data: admin, error: roleError }, c] = await Promise.all([
-        supabase.rpc("has_role", {
-          _user_id: userData.user.id,
-          _role: "admin",
-        }),
-        fetchSiteContent(),
-      ]);
+        const [{ data: admin, error: roleError }, c] = await Promise.all([
+          supabase.rpc("has_role", {
+            _user_id: userData.user.id,
+            _role: "admin",
+          }),
+          fetchSiteContent(),
+        ]);
 
-      if (!active) return;
+        if (!active) return;
 
-      if (roleError) {
-        setMsg("Could not verify admin access. Please try signing in again.");
+        if (roleError) {
+          setMsg("Could not verify admin access. Please try signing in again.");
+          setIsAdmin(false);
+        } else {
+          setIsAdmin(Boolean(admin));
+        }
+
+        setContent(c);
+      } catch (error) {
+        if (!active) return;
         setIsAdmin(false);
-      } else {
-        setIsAdmin(Boolean(admin));
+        setMsg(error instanceof Error ? error.message : "Admin page failed to load.");
+      } finally {
+        if (active) setReady(true);
       }
-
-      setContent(c);
-      setReady(true);
     })();
 
     return () => {
@@ -112,6 +119,7 @@ function AdminPage() {
         <p className="mt-2 text-sm text-muted-foreground">
           Your account does not have admin access. Ask the site owner to grant you the admin role.
         </p>
+        {msg ? <p className="mt-3 text-sm text-destructive">{msg}</p> : null}
         <div className="mt-6 flex justify-center gap-2">
           <Button variant="outline" onClick={logout}>Sign out</Button>
           <Link to="/" className="inline-flex items-center rounded-md border px-4 py-2 text-sm">
